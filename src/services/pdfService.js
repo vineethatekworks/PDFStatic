@@ -1,7 +1,7 @@
 const { PDFDocument } = require("pdf-lib");
 const fs = require("node:fs");
 
-const generatePDF = async (formData) => {
+async function generatePDF(formData) {
   try {
     const templateBytes = fs.readFileSync("vineetha.pdf");
     const pdfDoc = await PDFDocument.load(templateBytes);

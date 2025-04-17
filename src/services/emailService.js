@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const { smtpConfig } = require("../config/smtpConfig.js");
 
-const sendEmail = async (to, pdfBuffer) => {
+async function sendEmail (to, pdfBuffer){
   try {
     const transporter = nodemailer.createTransport(smtpConfig);
 
@@ -12,7 +12,7 @@ const sendEmail = async (to, pdfBuffer) => {
       text: "Please find the PDF attached.",
       attachments: [
         {
-          filename: "generated.pdf",
+          filename: `${to.split('@')[0]}-generated.pdf`,
           content: pdfBuffer,
           encoding: "base64",
         },
